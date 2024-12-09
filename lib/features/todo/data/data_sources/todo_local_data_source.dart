@@ -89,17 +89,17 @@ class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   Future<void> updateTodo(Todo todo) async {
     List<Todo> todos = _getTodosFromPrefs();
 
-    // Find the index of the todo with the given ID
+
     final index = todos.indexWhere((t) => t.id == todo.id);
 
     if (index != -1) {
-      // Update the todo at the found index
+ 
       todos[index] = todo.copyWith(
         title: todo.title,
         description: todo.description,
       );
 
-      // Save the updated list back to SharedPreferences
+     
       await _saveTodosToPrefs(todos);
     } else {
       throw Exception("Todo not found");
